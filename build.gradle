@@ -1,0 +1,50 @@
+buildscript {
+    ext {
+        springBootVersion = '2.0.3.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+//        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath("io.franzbecker:gradle-lombok:1.14") //추가
+    }
+}
+
+
+apply plugin: 'java-library'
+//apply plugin: 'eclipse'
+//apply plugin: 'org.springframework.boot'
+//apply plugin: 'io.spring.dependency-management'
+apply plugin: 'io.franzbecker.gradle-lombok' //추가
+
+
+group 'io.owen.jfc'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+
+//    compileOnly('org.springframework.boot:spring-boot-starter-data-jpa')
+    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-jpa
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: '2.0.3.RELEASE'
+
+    compileOnly('org.projectlombok:lombok:1.18.0') //추가
+}
+
+jar {
+    manifest {
+        attributes('Implementation-Title': project.name,
+                'Implementation-Version': project.version)
+    }
+}
