@@ -14,10 +14,13 @@ import javax.persistence.*;
 @Setter
 public class User {
 
+    /*
     @Id
     @Column(name = "user_id")
     private long id;
+    */
 
+    @Id
     @Column(name = "user_key")
     private String userKey;
 
@@ -36,5 +39,15 @@ public class User {
 
     public User(String userKey) {
         this.userKey = userKey;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userKey='" + userKey + '\'' +
+                ", userName='" + userName + '\'' +
+                ", isAuthored=" + isAuthored +
+                ", match=" + match +
+                '}';
     }
 }

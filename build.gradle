@@ -48,3 +48,14 @@ jar {
                 'Implementation-Version': project.version)
     }
 }
+
+
+task copyBatch(type: Copy) {
+    from "${buildDir}/libs"
+    into "/Users/owen/work/jfc/jfc-batch/libs"
+}
+
+task copyServer(type: Copy){
+    from "${buildDir}/libs"
+    into "/Users/owen/work/jfc/jfc-server/libs"
+}
